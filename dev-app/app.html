@@ -1,0 +1,128 @@
+<template>
+
+
+  <div class="card">
+    <div class="card-header text-white bg-primary">
+      Applicant
+    </div>
+    <div class="card-body">
+      <form role="form" >
+        <div class="form-group row" validation-errors.bind="nameErrors" class.bind="nameErrors.length ? 'has-error' : ''">
+          <label class="col-md-3 col-form-label" class="float-left">Name</label>
+          <div class="col-md-9">
+            <input type="text" placeholder="Name" class="form-control" id="Name" name="Name" minlength="5" value.bind="applicant.Name & validate" change.delegate="onValidateData()" required>
+            <span class="help-block" repeat.for="errorInfo of nameErrors" style="color: red;"> 
+              ${errorInfo.error.message}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row" validation-errors.bind="familyNameErrors" class.bind="familyNameErrors.length ? 'has-error' : ''">
+          <label class="col-md-3 col-form-label">Family Name</label>
+          <div class="col-md-9">
+            <input type="text" placeholder="Family name" class="form-control" minlength="5" id="FamilyName" name="FamilyName" value.bind="applicant.FamilyName & validate" change.delegate="onValidateData()" required>
+            <span class="help-block" repeat.for="errorInfo of familyNameErrors" style="color: red;"> 
+              ${errorInfo.error.message}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row" validation-errors.bind="addressErrors" class.bind="addressErrors.length ? 'has-error' : ''">
+          <label class="col-md-3 col-form-label">Address</label>
+          <div class="col-md-9">
+            <input type="text" placeholder="Address" class="form-control" minlength="10" id="Address" name="Address" value.bind="applicant.Address & validate" change.delegate="onValidateData()" required>
+            <span class="help-block" repeat.for="errorInfo of addressErrors" style="color: red;"> 
+              ${errorInfo.error.message}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group row" validation-errors.bind="countryOfOriginErrors" class.bind="countryErrorMesssage.length ? 'has-error' : ''">
+          <label class="col-md-3 col-form-label">Country Of Origin</label>
+          <div class="col-md-9">
+            <input type="text" placeholder="Country Of Origin" class="form-control" id="CountryOfOrigin" name="CountryOfOrigin" value.bind="applicant.CountryOfOrigin & validate" change.delegate="isValidateCountry()" required>
+            <span class="help-block" repeat.for="errorInfo of countryOfOriginErrors" style="color: red;"> 
+              ${errorInfo.error.message}
+            </span>
+
+            <span class="help-block"  style="color: red;">                  
+                  ${countryErrorMesssage}
+            </span>
+
+            
+          </div>
+        </div>
+
+        <div class="form-group row" validation-errors.bind="eMailAdress" class.bind="eMailAdress.length ? 'has-error' : ''">
+            <label class="col-md-3 col-form-label">E-Mail Adress</label>
+            <div class="col-md-9">
+              <input type="email" placeholder="E-Mail Adress" class="form-control" id="EMailAdress" name="EMailAdress" value.bind="applicant.EMailAdress & validate" change.delegate="onValidateData()" required>
+              <span class="help-block" repeat.for="errorInfo of eMailAdress" style="color: red;"> 
+                ${errorInfo.error.message}
+              </span>
+            </div>
+          </div>
+         
+          <div class="form-group row" validation-errors.bind="ageErrors" class.bind="ageErrors.length ? 'has-error' : ''">
+            <label class="col-md-3 col-form-label">Age</label>
+            <div class="col-md-9">
+              <input type="number" class="float-left" placeholder="Age" class="form-control" min="20" max="60" id="Age" name="" value.bind="applicant.Age & validate" change.delegate="onValidateData()" required>
+              <span class="help-block" repeat.for="errorInfo of ageErrors" style="color: red;"> 
+                ${errorInfo.error.message}
+              </span>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label">Hired</label>
+            <div class="col-md-9">
+              <input type="checkbox" class="float-left" placeholder="Hired" value="0" class="form-control" model.bind="applicant.Hired" checked.bind="applicant.Hired" value.bind="applicant.Hired">
+            </div>
+          </div>
+
+              <!-- <button type="submit">Submit</button> -->
+
+      </form>
+
+      <!-- <div>
+        <button class="btn btn-success float-right" click.delegate="onClickSaveButtonClick()" disabled.bind="!canSave">Save</button>
+      </div> -->
+
+      <button type="submit" class="btn btn-success float-right" click.delegate="onClickSaveButtonClick()" disabled.bind="!canSave">Send</button>
+      <div>
+        <button class="btn btn-success float-right" style="margin-right: 20px;"  click.trigger="onClickResetButtonClick()"  disabled.bind="!canReset">Reset</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header text-white bg-primary">
+      Applicants List
+    </div>
+    <table class="u-full-width">
+      <tr>
+        <th>Name</th>
+        <th>Family Name</th>
+        <th>Address</th>
+        <th>Country of Origin</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Hired</th>
+        <!-- <th></th> -->
+      </tr>
+      <tr repeat.for="applicant of applicants">
+        <td>${applicant.name}</td>
+        <td>${applicant.familyName}</td>
+        <td>${applicant.address}</td>
+        <td>${applicant.countryOfOrigin}</td>
+        <td>${applicant.eMailAdress}</td>
+        <td>${applicant.age}</td>
+        <td>${applicant.hired}</td>
+        <!-- <td><button click.trigger="deleteApplicants(applicant)">Remove</button></td> -->
+      </tr>
+    </table>
+  </div>
+</template>
+
+
