@@ -146,6 +146,8 @@ Here is one simple setup.
 
 For more information, go to https://aurelia.io/docs/cli/cli-bundler
 
+
+
 ## Run dev app
 
 Run `au run`, then open `http://localhost:9000`
@@ -165,3 +167,19 @@ To change dev server host, do `au run --host 127.0.0.1`
 Run `au test` (or `au jest`).
 
 To run in watch mode, `au test --watch` or `au jest --watch`.
+
+
+
+
+## There are following step to run HANNCLIENT WEB APP   
+
+1. Install Visual Studio Code 2019 
+2. Set up The basics of the Aurelia CLI.
+https://aurelia.io/docs/cli/basics#introduction
+3. Clone the project from github from the following link 
+https://github.com/hafiz5007/Hahn.ApplicatonProcess.Application.git
+4. run the terminal from Visual Studio code  =>   npm install aurelia-cli -g
+5. run  on termincal =>   npm install
+6. Run `au run`, then open `http://localhost:9000`  
+   To open browser automatically, do `au run --open`.
+

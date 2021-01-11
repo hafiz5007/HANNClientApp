@@ -21,16 +21,16 @@ export class Applicant {
   //     this. Hired = hired;    
   // }
 
-  Applicant(applicant: Applicant) {
+  Applicant() {
     
-    this.Id = applicant.Id;
-    this.Name = applicant.Name;
-    this.FamilyName = applicant.FamilyName;
-    this.Address = applicant.Address;
-    this.CountryOfOrigin = applicant.CountryOfOrigin;
-    this.EMailAdress = applicant.EMailAdress;
-    this.Age = applicant.Age;
-    this.Hired = applicant.Hired;
+    this.Id = 0;
+    this.Name = "";
+    this.FamilyName= "";
+    this.Address= "";
+    this.CountryOfOrigin= "";
+    this.EMailAdress= "";
+    this.Age = 0;
+    this.Hired = false;
   }
 
 }
